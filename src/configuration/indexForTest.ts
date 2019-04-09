@@ -1,6 +1,6 @@
 // tslint:disable no-reaching-imports
 
-export { computeBasicOptionedConstraintFromEnum } from './constraints'
+export { computeBasicOptionedConstraintFromEnum } from './constraint/indexForTest'
 
 export {
     InputType,

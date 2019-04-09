@@ -1,5 +1,6 @@
 export { standardConfigurations } from './standards'
-export { computeBasicOptionedConstraintFromEnum } from './constraints'
+export { computeBasicOptionedConstraintFromEnum, sortOptions, computeStep, computeMinAndMax } from './constraint'
+export { computeSortSpecs } from './sort'
 export {
     Configuration,
     OptionedConfiguration,

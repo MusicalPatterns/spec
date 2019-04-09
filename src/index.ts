@@ -14,8 +14,12 @@ export {
     standardConfigurations,
     OptionedConstraintOption,
     RangedInputType,
-    computeBasicOptionedConstraintFromEnum,
     ArrayedConstraint,
+    computeBasicOptionedConstraintFromEnum,
+    sortOptions,
+    computeStep,
+    computeMinAndMax,
+    computeSortSpecs,
 } from './configuration'
 export {
     Preset,
@@ -37,6 +41,16 @@ export {
     Validation,
     validateSpecs,
 } from './validation'
+export {
+    computeArrayedSpecValue,
+    computeArrayedDomSpecValue,
+    computeArrayedValidation,
+} from './arrrayedValues'
+export {
+    computeSingularValidation,
+    computeSingularDisplayedValue,
+    computeSingularSubmittedValue,
+} from './singularValues'
 
 export {
     StandardSpecs,
