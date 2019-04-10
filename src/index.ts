@@ -39,6 +39,7 @@ export {
     SingularValidation,
     ArrayedValidation,
     Validation,
+    mergeValidations,
     validateSpecs,
 } from './validation'
 export {

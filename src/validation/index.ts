@@ -1,4 +1,5 @@
 export { validateSpecs } from './specs'
+export { mergeValidations } from './mergeValidations'
 
 export {
     ComputeValidations,
