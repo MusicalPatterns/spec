@@ -11,6 +11,6 @@
   "devDependencies": {
     "@musical-patterns/cli": "^1.0.546",
     "@musical-patterns/metadata": "^1.0.1",
-    "@musical-patterns/utilities": "^1.0.440"
+    "@musical-patterns/utilities": "^1.0.441"
   }
 }
