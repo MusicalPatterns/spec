@@ -1,6 +1,6 @@
 // tslint:disable cyclomatic-complexity
 
-import { apply, from, Index, indexOfFinalElement, isUndefined, Maybe } from '@musical-patterns/utilities'
+import { apply, from, Index, indexOfFinalElement, insteadOf, isUndefined, Maybe } from '@musical-patterns/utilities'
 import {
     isArrayedDomSpecValue,
     isArrayedSpecValue,
@@ -47,7 +47,7 @@ const computeSingularValidation: (computeSingularValidationParameters: {
             isUndefined(validation) ||
             from.Index(fieldIndex) > from.Index<Maybe<string>>(indexOfFinalElement(validation)) ?
                 undefined :
-                apply.Index(validation, fieldIndex as unknown as Index<SingularValidation>) :
+                apply.Index(validation, insteadOf<Index, SingularValidation>(fieldIndex)) :
             isSingularValidation(validation) ?
                 validation :
                 undefined
