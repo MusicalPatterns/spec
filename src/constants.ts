@@ -1,14 +1,16 @@
 // tslint:disable no-magic-numbers
 
-import { Hz, Meters, Ms, NO_TRANSLATION, Scalar, to, Translation } from '@musical-patterns/utilities'
+import { Hz, insteadOf, Meters, Ms, NO_TRANSLATION, of, Scalar, to, Translation } from '@musical-patterns/utilities'
 
-const STANDARD_BASE_FREQUENCY: Scalar<Hz> = to.Hz(to.Scalar(700))
-const STANDARD_BASE_DURATION: Scalar<Ms> = to.Ms(to.Scalar(700))
+const STANDARD_BASE_FREQUENCY: Scalar<Hz> = to.Scalar(of.Hz(700))
+const STANDARD_BASE_DURATION: Scalar<Ms> = to.Scalar(of.Ms(700))
 const STANDARD_BASE_POSITION: Array<Translation<Meters>> =
-    [ NO_TRANSLATION, NO_TRANSLATION, NO_TRANSLATION ].map(to.Meters)
-const STANDARD_BASE_POSITION_SCALAR: Scalar<Meters> = to.Scalar(to.Meters(1))
-const STANDARD_BASE_DURATION_TRANSLATION: Translation<Ms> = to.Ms(NO_TRANSLATION)
-const STANDARD_BASE_FREQUENCY_TRANSLATION: Translation<Hz> = to.Hz(NO_TRANSLATION)
+    [ NO_TRANSLATION, NO_TRANSLATION, NO_TRANSLATION ]
+    // tslint:disable-next-line no-unnecessary-callback-wrapper
+        .map((translation: Translation) => insteadOf<Meters, number, 'Translation'>(translation))
+const STANDARD_BASE_POSITION_SCALAR: Scalar<Meters> = to.Scalar(of.Meters(1))
+const STANDARD_BASE_DURATION_TRANSLATION: Translation<Ms> = insteadOf<Ms, number, 'Translation'>(NO_TRANSLATION)
+const STANDARD_BASE_FREQUENCY_TRANSLATION: Translation<Hz> = insteadOf<Hz, number, 'Translation'>(NO_TRANSLATION)
 
 export {
     STANDARD_BASE_POSITION,
