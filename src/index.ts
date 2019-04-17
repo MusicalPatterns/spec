@@ -54,6 +54,14 @@ export {
 } from './singularValues'
 
 export {
+    STANDARD_BASE_POSITION,
+    STANDARD_BASE_POSITION_SCALAR,
+    STANDARD_BASE_DURATION,
+    STANDARD_BASE_FREQUENCY,
+    STANDARD_BASE_DURATION_TRANSLATION,
+    STANDARD_BASE_FREQUENCY_TRANSLATION,
+} from './constants'
+export {
     StandardSpecs,
     StandardSpec,
     Specs,
