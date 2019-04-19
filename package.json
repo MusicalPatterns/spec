@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/spec",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "url": "https://github.com/MusicalPatterns/spec.git"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.550",
+    "@musical-patterns/cli": "^1.0.552",
     "@musical-patterns/metadata": "^1.0.5",
     "@musical-patterns/utilities": "^1.0.489"
   }
