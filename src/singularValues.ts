@@ -1,6 +1,6 @@
 // tslint:disable cyclomatic-complexity
 
-import { apply, from, indexOfFinalElement, insteadOf, isUndefined, Maybe, Ordinal } from '@musical-patterns/utilities'
+import { indexOfFinalElement, insteadOf, isUndefined, Maybe, notAs, Ordinal, use } from '@musical-patterns/utilities'
 import {
     isArrayedDomSpecValue,
     isArrayedSpecValue,
@@ -20,7 +20,7 @@ const computeSingularSubmittedValue: (computeSingularSubmittedValueParameters: {
         !isUndefined(fieldIndex) && isArrayedSpecValue(specValue) ?
             fieldIndex > indexOfFinalElement(specValue) ?
                 undefined :
-                apply.Ordinal(specValue, fieldIndex) :
+                use.Ordinal(specValue, fieldIndex) :
             isSingularSpecValue(specValue) ?
                 specValue :
                 undefined
@@ -33,7 +33,7 @@ const computeSingularDisplayedValue: (computeSingularDisplayedValueParameters: {
         !isUndefined(fieldIndex) && isArrayedDomSpecValue(domSpecValue) ?
             fieldIndex > indexOfFinalElement(domSpecValue) ?
                 undefined :
-                apply.Ordinal(domSpecValue, fieldIndex) :
+                use.Ordinal(domSpecValue, fieldIndex) :
             isSingularDomSpecValue(domSpecValue) ?
                 domSpecValue :
                 undefined
@@ -45,9 +45,9 @@ const computeSingularValidation: (computeSingularValidationParameters: {
     ({ validation, fieldIndex }: { fieldIndex?: Ordinal, validation: Validation }): SingularValidation =>
         !isUndefined(fieldIndex) && isArrayedValidation(validation) ?
             isUndefined(validation) ||
-            from.Ordinal(fieldIndex) > from.Ordinal<Maybe<string>>(indexOfFinalElement(validation)) ?
+            notAs.Ordinal(fieldIndex) > notAs.Ordinal<Maybe<string>>(indexOfFinalElement(validation)) ?
                 undefined :
-                apply.Ordinal(validation, insteadOf<Ordinal, SingularValidation>(fieldIndex)) :
+                use.Ordinal(validation, insteadOf<Ordinal, SingularValidation>(fieldIndex)) :
             isSingularValidation(validation) ?
                 validation :
                 undefined

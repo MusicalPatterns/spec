@@ -1,10 +1,4 @@
-import {
-    ComputeValidations,
-    Configurations,
-    InputType,
-    validateSpecs,
-    Validations,
-} from '../../../src/indexForTest'
+import { ComputeValidations, Configurations, InputType, validateSpecs, Validations } from '../../../src/indexForTest'
 import { MinimumTestableSpec } from '../../support'
 
 const EXPECTED_CUSTOM_VALIDATION_MESSAGE: string = 'cannot be six'
