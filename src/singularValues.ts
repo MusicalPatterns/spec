@@ -9,7 +9,14 @@ import {
     isSingularSpecValue,
     isSingularValidation,
 } from './typeGuards'
-import { DomSpecValue, SingularDomSpecValue, SingularSpecValue, SpecValue } from './types'
+import {
+    ArrayedDomSpecValue,
+    ArrayedSpecValue,
+    DomSpecValue,
+    SingularDomSpecValue,
+    SingularSpecValue,
+    SpecValue,
+} from './types'
 import { SingularValidation, Validation } from './validation'
 
 const computeSingularSubmittedValue: (computeSingularSubmittedValueParameters: {
@@ -18,9 +25,9 @@ const computeSingularSubmittedValue: (computeSingularSubmittedValueParameters: {
 }) => SingularSpecValue =
     ({ specValue, fieldIndex }: { fieldIndex?: Ordinal, specValue: SpecValue }): SingularSpecValue =>
         !isUndefined(fieldIndex) && isArrayedSpecValue(specValue) ?
-            fieldIndex > indexOfFinalElement(specValue) ?
+            insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex) > indexOfFinalElement(specValue) ?
                 undefined :
-                use.Ordinal(specValue, fieldIndex) :
+                use.Ordinal(specValue, insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex)) :
             isSingularSpecValue(specValue) ?
                 specValue :
                 undefined
@@ -31,9 +38,9 @@ const computeSingularDisplayedValue: (computeSingularDisplayedValueParameters: {
 }) => SingularDomSpecValue =
     ({ domSpecValue, fieldIndex }: { domSpecValue: DomSpecValue, fieldIndex?: Ordinal }): SingularDomSpecValue =>
         !isUndefined(fieldIndex) && isArrayedDomSpecValue(domSpecValue) ?
-            fieldIndex > indexOfFinalElement(domSpecValue) ?
+            insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex) > indexOfFinalElement(domSpecValue) ?
                 undefined :
-                use.Ordinal(domSpecValue, fieldIndex) :
+                use.Ordinal(domSpecValue, insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex)) :
             isSingularDomSpecValue(domSpecValue) ?
                 domSpecValue :
                 undefined
@@ -45,9 +52,9 @@ const computeSingularValidation: (computeSingularValidationParameters: {
     ({ validation, fieldIndex }: { fieldIndex?: Ordinal, validation: Validation }): SingularValidation =>
         !isUndefined(fieldIndex) && isArrayedValidation(validation) ?
             isUndefined(validation) ||
-            notAs.Ordinal(fieldIndex) > notAs.Ordinal<Maybe<string>>(indexOfFinalElement(validation)) ?
+            notAs.Ordinal(fieldIndex) > notAs.Ordinal<Array<Maybe<string>>>(indexOfFinalElement(validation)) ?
                 undefined :
-                use.Ordinal(validation, insteadOf<Ordinal, SingularValidation>(fieldIndex)) :
+                use.Ordinal(validation, insteadOf<Ordinal, SingularValidation[]>(fieldIndex)) :
             isSingularValidation(validation) ?
                 validation :
                 undefined
