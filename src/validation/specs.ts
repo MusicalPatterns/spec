@@ -47,9 +47,8 @@ const validateSpecs: <SpecsType = Specs>(parameters: {
         }: ValidateSpecsParameters<SpecsType>,
     ): Validations<SpecsType> => {
         const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =
-            reduce<[ string, DomSpecValue ], Validations<SpecsType>>(
+            reduce(
                 entries(displayedSpecs),
-                // @ts-ignore
                 (accumulator: Validations<SpecsType>, [ key, val ]: [ string, DomSpecValue ]) => ({
                     ...accumulator,
                     // @ts-ignore

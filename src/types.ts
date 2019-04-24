@@ -1,12 +1,13 @@
 import {
+    Duration,
     HtmlValueOrChecked,
     Hz,
     KeyMap,
     Maybe,
     Meters,
-    Ms,
     NominalNumber,
     ObjectOf,
+    Point,
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
@@ -23,21 +24,21 @@ type ArrayedDomSpecValue = SingularDomSpecValue[]
 type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
 
 enum StandardSpec {
-    BASE_DURATION_TRANSLATION = 'baseDurationTranslation',
-    BASE_DURATION = 'baseDuration',
-    BASE_FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
-    BASE_FREQUENCY = 'baseFrequency',
-    BASE_POSITION = 'basePosition',
-    BASE_POSITION_SCALAR = 'basePositionScalar',
+    BASIS_DURATION_TRANSLATION = 'baseDurationTranslation',
+    BASIS_DURATION = 'baseDuration',
+    BASIS_FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
+    BASIS_FREQUENCY = 'baseFrequency',
+    BASIS_POSITION = 'basePosition',
+    BASIS_POSITION_SCALAR = 'basePositionScalar',
 }
 
 type StandardSpecs = Partial<{
-    [ StandardSpec.BASE_DURATION_TRANSLATION ]: Translation<Ms>,
-    [ StandardSpec.BASE_DURATION ]: Scalar<Ms>,
-    [ StandardSpec.BASE_FREQUENCY_TRANSLATION ]: Translation<Hz>,
-    [ StandardSpec.BASE_FREQUENCY ]: Scalar<Hz>,
-    [ StandardSpec.BASE_POSITION ]: Array<Translation<Meters>>,
-    [ StandardSpec.BASE_POSITION_SCALAR ]: Scalar<Meters>,
+    [ StandardSpec.BASIS_DURATION_TRANSLATION ]: Translation<Duration>,
+    [ StandardSpec.BASIS_DURATION ]: Duration,
+    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: Translation<Point<Hz>>,
+    [ StandardSpec.BASIS_FREQUENCY ]: Point<Hz>,
+    [ StandardSpec.BASIS_POSITION ]: Array<Point<Meters>>,
+    [ StandardSpec.BASIS_POSITION_SCALAR ]: Scalar<Point<Meters>>,
 }>
 
 interface Specs extends StandardSpecs, ObjectOf<Maybe<SpecValue>> {}

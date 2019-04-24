@@ -3,12 +3,12 @@ import { StandardSpec } from '../types'
 import { InputType, RangedInputType, StandardConfigurations } from './types'
 
 const standardConfigurations: StandardConfigurations = {
-    [ StandardSpec.BASE_DURATION_TRANSLATION ]: {
+    [ StandardSpec.BASIS_DURATION_TRANSLATION ]: {
         description: 'translate each duration by this amount (does not preserve temporal ratios)',
         inputType: InputType.RANGED,
         units: Units.MILLISECONDS,
     },
-    [ StandardSpec.BASE_DURATION ]: {
+    [ StandardSpec.BASIS_DURATION ]: {
         constraint: {
             excludeMin: true,
             min: 0,
@@ -16,12 +16,12 @@ const standardConfigurations: StandardConfigurations = {
         inputType: InputType.RANGED,
         units: Units.MILLISECONDS,
     },
-    [ StandardSpec.BASE_FREQUENCY_TRANSLATION ]: {
+    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: {
         description: 'translate each pitch by this amount (does not preserve harmonic ratios)',
         inputType: InputType.RANGED,
         units: Units.HERTZ,
     },
-    [ StandardSpec.BASE_FREQUENCY ]: {
+    [ StandardSpec.BASIS_FREQUENCY ]: {
         constraint: {
             excludeMin: true,
             min: 0,
@@ -29,7 +29,7 @@ const standardConfigurations: StandardConfigurations = {
         inputType: InputType.RANGED,
         units: Units.HERTZ,
     },
-    [ StandardSpec.BASE_POSITION ]: {
+    [ StandardSpec.BASIS_POSITION ]: {
         description: 'where in your virtual space the pattern will be centered',
         hideInput: RangedInputType.RANGE,
         inputType: InputType.RANGED,
@@ -37,7 +37,7 @@ const standardConfigurations: StandardConfigurations = {
         order: 1,
         units: Units.METERS,
     },
-    [ StandardSpec.BASE_POSITION_SCALAR ]: {
+    [ StandardSpec.BASIS_POSITION_SCALAR ]: {
         description: 'how far away the sounds will come from',
         inputType: InputType.RANGED,
         order: 2,

@@ -77,12 +77,12 @@ type Configuration =
     ToggledConfiguration
 
 interface StandardConfigurations extends Configurations<StandardSpecs> {
-    [ StandardSpec.BASE_DURATION_TRANSLATION ]: RangedConfiguration,
-    [ StandardSpec.BASE_DURATION ]: RangedConfiguration,
-    [ StandardSpec.BASE_FREQUENCY_TRANSLATION ]: RangedConfiguration,
-    [ StandardSpec.BASE_FREQUENCY ]: RangedConfiguration,
-    [ StandardSpec.BASE_POSITION ]: RangedConfiguration,
-    [ StandardSpec.BASE_POSITION_SCALAR ]: RangedConfiguration,
+    [ StandardSpec.BASIS_DURATION_TRANSLATION ]: RangedConfiguration,
+    [ StandardSpec.BASIS_DURATION ]: RangedConfiguration,
+    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: RangedConfiguration,
+    [ StandardSpec.BASIS_FREQUENCY ]: RangedConfiguration,
+    [ StandardSpec.BASIS_POSITION ]: RangedConfiguration,
+    [ StandardSpec.BASIS_POSITION_SCALAR ]: RangedConfiguration,
 }
 
 type Configurations<SpecsType = Specs> = KeyMap<SpecsType, Configuration>

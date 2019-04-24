@@ -1,20 +1,21 @@
 // tslint:disable no-magic-numbers
 
-import { as, Hz, Meters, Ms, NO_SHIFT, Scalar, Translation } from '@musical-patterns/utilities'
+import { as, Duration, Hz, Meters, Ms, NO_SHIFT, Point, Scalar, Translation } from '@musical-patterns/utilities'
 
-const STANDARD_BASE_FREQUENCY: Scalar<Hz> = as.Scalar<Hz>(700)
-const STANDARD_BASE_DURATION: Scalar<Ms> = as.Scalar<Ms>(700)
-const STANDARD_BASE_POSITION: Array<Translation<Meters>> = [ NO_SHIFT, NO_SHIFT, NO_SHIFT ]
+const STANDARD_BASIS_FREQUENCY: Point<Hz> = as.Point<Hz>(700)
+const STANDARD_BASIS_DURATION: Duration = as.Translation<Point<Ms>>(700)
+const STANDARD_BASIS_POSITION: Array<Point<Meters>> =
+    [ 0, 0, 0 ].map((dimension: number) => as.Point<Meters>(dimension))
 
-const STANDARD_BASE_POSITION_SCALAR: Scalar<Meters> = as.Scalar<Meters>(1)
-const STANDARD_BASE_DURATION_TRANSLATION: Translation<Ms> = NO_SHIFT
-const STANDARD_BASE_FREQUENCY_TRANSLATION: Translation<Hz> = NO_SHIFT
+const STANDARD_BASIS_POSITION_SCALAR: Scalar<Point<Meters>> = as.Scalar<Point<Meters>>(1)
+const STANDARD_BASIS_DURATION_TRANSLATION: Translation<Duration> = NO_SHIFT
+const STANDARD_BASIS_FREQUENCY_TRANSLATION: Translation<Point<Hz>> = NO_SHIFT
 
 export {
-    STANDARD_BASE_POSITION,
-    STANDARD_BASE_POSITION_SCALAR,
-    STANDARD_BASE_DURATION,
-    STANDARD_BASE_FREQUENCY,
-    STANDARD_BASE_DURATION_TRANSLATION,
-    STANDARD_BASE_FREQUENCY_TRANSLATION,
+    STANDARD_BASIS_POSITION,
+    STANDARD_BASIS_POSITION_SCALAR,
+    STANDARD_BASIS_DURATION,
+    STANDARD_BASIS_FREQUENCY,
+    STANDARD_BASIS_DURATION_TRANSLATION,
+    STANDARD_BASIS_FREQUENCY_TRANSLATION,
 }

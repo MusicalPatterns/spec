@@ -1,6 +1,6 @@
 // tslint:disable cyclomatic-complexity
 
-import { indexOfFinalElement, insteadOf, isUndefined, Maybe, notAs, Ordinal, use } from '@musical-patterns/utilities'
+import { indexOfFinalElement, insteadOf, isUndefined, Ordinal, use } from '@musical-patterns/utilities'
 import {
     isArrayedDomSpecValue,
     isArrayedSpecValue,
@@ -17,7 +17,7 @@ import {
     SingularSpecValue,
     SpecValue,
 } from './types'
-import { SingularValidation, Validation } from './validation'
+import { ArrayedValidation, SingularValidation, Validation } from './validation'
 
 const computeSingularSubmittedValue: (computeSingularSubmittedValueParameters: {
     fieldIndex?: Ordinal,
@@ -25,7 +25,8 @@ const computeSingularSubmittedValue: (computeSingularSubmittedValueParameters: {
 }) => SingularSpecValue =
     ({ specValue, fieldIndex }: { fieldIndex?: Ordinal, specValue: SpecValue }): SingularSpecValue =>
         !isUndefined(fieldIndex) && isArrayedSpecValue(specValue) ?
-            insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex) > indexOfFinalElement(specValue) ?
+            insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex) >
+            indexOfFinalElement<SingularSpecValue, SingularSpecValue[]>(specValue) ?
                 undefined :
                 use.Ordinal(specValue, insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex)) :
             isSingularSpecValue(specValue) ?
@@ -38,7 +39,8 @@ const computeSingularDisplayedValue: (computeSingularDisplayedValueParameters: {
 }) => SingularDomSpecValue =
     ({ domSpecValue, fieldIndex }: { domSpecValue: DomSpecValue, fieldIndex?: Ordinal }): SingularDomSpecValue =>
         !isUndefined(fieldIndex) && isArrayedDomSpecValue(domSpecValue) ?
-            insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex) > indexOfFinalElement(domSpecValue) ?
+            insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex) >
+            indexOfFinalElement<SingularDomSpecValue, SingularDomSpecValue[]>(domSpecValue) ?
                 undefined :
                 use.Ordinal(domSpecValue, insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex)) :
             isSingularDomSpecValue(domSpecValue) ?
@@ -52,7 +54,8 @@ const computeSingularValidation: (computeSingularValidationParameters: {
     ({ validation, fieldIndex }: { fieldIndex?: Ordinal, validation: Validation }): SingularValidation =>
         !isUndefined(fieldIndex) && isArrayedValidation(validation) ?
             isUndefined(validation) ||
-            notAs.Ordinal(fieldIndex) > notAs.Ordinal<Array<Maybe<string>>>(indexOfFinalElement(validation)) ?
+            insteadOf<Ordinal, ArrayedValidation>(fieldIndex) >
+            indexOfFinalElement<SingularValidation, SingularValidation[]>(validation) ?
                 undefined :
                 use.Ordinal(validation, insteadOf<Ordinal, SingularValidation[]>(fieldIndex)) :
             isSingularValidation(validation) ?
