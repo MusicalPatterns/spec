@@ -4,10 +4,10 @@ import {
     Hz,
     KeyMap,
     Maybe,
-    Meters,
     NominalNumber,
     ObjectOf,
     Point,
+    Position,
     Scalar,
     Translation,
 } from '@musical-patterns/utilities'
@@ -37,8 +37,8 @@ type StandardSpecs = Partial<{
     [ StandardSpec.BASIS_DURATION ]: Duration,
     [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: Translation<Point<Hz>>,
     [ StandardSpec.BASIS_FREQUENCY ]: Point<Hz>,
-    [ StandardSpec.BASIS_POSITION ]: Array<Point<Meters>>,
-    [ StandardSpec.BASIS_POSITION_SCALAR ]: Scalar<Point<Meters>>,
+    [ StandardSpec.BASIS_POSITION ]: Position[],
+    [ StandardSpec.BASIS_POSITION_SCALAR ]: Scalar<Position>,
 }>
 
 interface Specs extends StandardSpecs, ObjectOf<Maybe<SpecValue>> {}
