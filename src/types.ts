@@ -1,12 +1,11 @@
 import {
     Duration,
     HtmlValueOrChecked,
-    Hz,
     KeyMap,
     Maybe,
     NominalNumber,
     ObjectOf,
-    Point,
+    Pitch,
     Position,
     Scalar,
     Translation,
@@ -35,8 +34,8 @@ enum StandardSpec {
 type StandardSpecs = Partial<{
     [ StandardSpec.BASIS_DURATION_TRANSLATION ]: Translation<Duration>,
     [ StandardSpec.BASIS_DURATION ]: Duration,
-    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: Translation<Point<Hz>>,
-    [ StandardSpec.BASIS_FREQUENCY ]: Point<Hz>,
+    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: Translation<Pitch>,
+    [ StandardSpec.BASIS_FREQUENCY ]: Pitch,
     [ StandardSpec.BASIS_POSITION ]: Position[],
     [ StandardSpec.BASIS_POSITION_SCALAR ]: Scalar<Position>,
 }>
