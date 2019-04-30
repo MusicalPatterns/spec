@@ -23,21 +23,21 @@ type ArrayedDomSpecValue = SingularDomSpecValue[]
 type DomSpecValue = SingularDomSpecValue | ArrayedDomSpecValue
 
 enum StandardSpec {
-    BASIS_DURATION_TRANSLATION = 'baseDurationTranslation',
-    BASIS_DURATION = 'baseDuration',
-    BASIS_FREQUENCY_TRANSLATION = 'baseFrequencyTranslation',
-    BASIS_FREQUENCY = 'baseFrequency',
-    BASIS_POSITION = 'basePosition',
-    BASIS_POSITION_SCALAR = 'basePositionScalar',
+    BASIS_DURATION = 'basisDuration',
+    BASIS_DURATION_TRANSLATION = 'basisDurationTranslation',
+    BASIS_FREQUENCY = 'basisFrequency',
+    BASIS_FREQUENCY_TRANSLATION = 'basisFrequencyTranslation',
+    BASIS_POSITION = 'basisPosition',
+    BASIS_POSITION_TRANSLATION = 'basisPositionTranslation',
 }
 
 type StandardSpecs = Partial<{
-    [ StandardSpec.BASIS_DURATION_TRANSLATION ]: Translation<Duration>,
     [ StandardSpec.BASIS_DURATION ]: Duration,
-    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: Translation<Pitch>,
+    [ StandardSpec.BASIS_DURATION_TRANSLATION ]: Translation<Duration>,
     [ StandardSpec.BASIS_FREQUENCY ]: Pitch,
-    [ StandardSpec.BASIS_POSITION ]: Position[],
-    [ StandardSpec.BASIS_POSITION_SCALAR ]: Scalar<Position>,
+    [ StandardSpec.BASIS_FREQUENCY_TRANSLATION ]: Translation<Pitch>,
+    [ StandardSpec.BASIS_POSITION ]: Position,
+    [ StandardSpec.BASIS_POSITION_TRANSLATION ]: Array<Translation<Position>>,
 }>
 
 interface Specs extends StandardSpecs, ObjectOf<Maybe<SpecValue>> {}
