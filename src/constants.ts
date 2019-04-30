@@ -1,22 +1,22 @@
 // tslint:disable no-magic-numbers
 
-import { as, Duration, musicalAs, NO_SHIFT, Pitch, Position, Translation } from '@musical-patterns/utilities'
+import { as, Duration, Location, musicalAs, NO_SHIFT, Tone, Translation } from '@musical-patterns/utilities'
 
-const STANDARD_BASIS_DURATION: Duration = musicalAs.Duration(700)
-const STANDARD_BASIS_DURATION_TRANSLATION: Translation<Duration> = NO_SHIFT
+const STANDARD_MS_PHYSICALIZATION: Duration = musicalAs.Duration(700)
+const STANDARD_MS_PHYSICALIZATION_TRANSLATION: Translation<Duration> = NO_SHIFT
 
-const STANDARD_BASIS_FREQUENCY: Pitch = musicalAs.Pitch(700)
-const STANDARD_BASIS_FREQUENCY_TRANSLATION: Translation<Pitch> = NO_SHIFT
+const STANDARD_HZ_PHYSICALIZATION: Tone = musicalAs.Tone(700)
+const STANDARD_HZ_PHYSICALIZATION_TRANSLATION: Translation<Tone> = NO_SHIFT
 
-const STANDARD_BASIS_POSITION: Position = musicalAs.Position(1)
-const STANDARD_BASIS_POSITION_TRANSLATION: Array<Translation<Position>> =
-    [ 0, 0, 0 ].map((dimension: number) => as.Translation<Position>(dimension))
+const STANDARD_METERS_PHYSICALIZATION: Location = musicalAs.Location(1)
+const STANDARD_METERS_PHYSICALIZATION_TRANSLATION: Array<Translation<Location>> =
+    [ 0, 0, 0 ].map((dimension: number) => as.Translation<Location>(dimension))
 
 export {
-    STANDARD_BASIS_DURATION,
-    STANDARD_BASIS_DURATION_TRANSLATION,
-    STANDARD_BASIS_FREQUENCY,
-    STANDARD_BASIS_FREQUENCY_TRANSLATION,
-    STANDARD_BASIS_POSITION,
-    STANDARD_BASIS_POSITION_TRANSLATION,
+    STANDARD_MS_PHYSICALIZATION,
+    STANDARD_MS_PHYSICALIZATION_TRANSLATION,
+    STANDARD_HZ_PHYSICALIZATION,
+    STANDARD_HZ_PHYSICALIZATION_TRANSLATION,
+    STANDARD_METERS_PHYSICALIZATION,
+    STANDARD_METERS_PHYSICALIZATION_TRANSLATION,
 }
