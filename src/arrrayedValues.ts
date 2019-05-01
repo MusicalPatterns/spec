@@ -11,7 +11,7 @@ const computeArrayedDomSpecValue: (displayedSpecs: DomSpecs, specKey: string) =>
         }
 
         if (!isArrayedDomSpecValue(maybeDisplayedValue)) {
-            throw new Error('displayed value was not arrayed')
+            throw new Error(`displayed value was not arrayed: ${maybeDisplayedValue}`)
         }
 
         return maybeDisplayedValue
@@ -25,7 +25,7 @@ const computeArrayedSpecValue: (submittedSpecs: Specs, specKey: string) => Array
         }
 
         if (!isArrayedSpecValue(maybeSubmittedValue)) {
-            throw new Error('submitted value was not arrayed')
+            throw new Error(`submitted value was not arrayed: ${maybeSubmittedValue}`)
         }
 
         return maybeSubmittedValue
@@ -36,7 +36,7 @@ const computeArrayedValidation: (validations: Validations, specKey: string) => A
         const validation: Validation = validations && validations[ specKey ]
 
         if (!isArrayedValidation(validation)) {
-            throw new Error('cannot treat a singular validation as arrayed')
+            throw new Error(`cannot treat a singular validation as arrayed: ${validation}`)
         }
 
         return validation
