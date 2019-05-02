@@ -1,4 +1,4 @@
-import { isUndefined } from '@musical-patterns/utilities'
+import { isArray, isUndefined } from '@musical-patterns/utilities'
 import {
     ArrayedDomSpecValue,
     ArrayedSpecValue,
@@ -10,16 +10,18 @@ import {
 import { ArrayedValidation, SingularValidation, Validation } from './validation'
 
 const isArrayedSpecValue: (specValue: SpecValue) => specValue is ArrayedSpecValue =
+    // tslint:disable-next-line no-unnecessary-callback-wrapper
     (specValue: SpecValue): specValue is ArrayedSpecValue =>
-        specValue instanceof Array
+        isArray(specValue)
 
 const isArrayedDomSpecValue: (domSpecValue: DomSpecValue) => domSpecValue is ArrayedDomSpecValue =
+    // tslint:disable-next-line no-unnecessary-callback-wrapper
     (domSpecValue: DomSpecValue): domSpecValue is ArrayedDomSpecValue =>
-        domSpecValue instanceof Array
+        isArray(domSpecValue)
 
 const isArrayedValidation: (validation: Validation) => validation is ArrayedValidation =
     (validation: Validation): validation is ArrayedValidation =>
-        isUndefined(validation) || validation instanceof Array
+        isUndefined(validation) || isArray(validation)
 
 const isSingularSpecValue: (specValue: SpecValue) => specValue is SingularSpecValue =
     (specValue: SpecValue): specValue is SingularSpecValue =>
