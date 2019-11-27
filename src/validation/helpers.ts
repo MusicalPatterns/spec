@@ -14,11 +14,11 @@ const validationRequired: (configuration: Maybe<Configuration>) => configuration
     }
 
 const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint:
-    <SpecsType = Specs>(
+    <SpecsType extends Specs = Specs>(
         reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations<SpecsType>,
         reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>,
     ) => Validations<SpecsType> =
-    <SpecsType = Specs>(
+    <SpecsType extends Specs = Specs>(
         reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations<SpecsType>,
         reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>,
     ): Validations<SpecsType> => {

@@ -26,7 +26,7 @@ const computeSingularSubmittedValue: (computeSingularSubmittedValueParameters: {
     ({ specValue, fieldIndex }: { fieldIndex?: Ordinal, specValue: SpecValue }): SingularSpecValue =>
         !isUndefined(fieldIndex) && isArrayedSpecValue(specValue) ?
             insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex) >
-            indexOfFinalElement<SingularSpecValue, SingularSpecValue[]>(specValue) ?
+            indexOfFinalElement<SingularSpecValue[]>(specValue) ?
                 undefined :
                 use.Ordinal(specValue, insteadOf<Ordinal, ArrayedSpecValue>(fieldIndex)) :
             isSingularSpecValue(specValue) ?
@@ -40,7 +40,7 @@ const computeSingularDisplayedValue: (computeSingularDisplayedValueParameters: {
     ({ domSpecValue, fieldIndex }: { domSpecValue: DomSpecValue, fieldIndex?: Ordinal }): SingularDomSpecValue =>
         !isUndefined(fieldIndex) && isArrayedDomSpecValue(domSpecValue) ?
             insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex) >
-            indexOfFinalElement<SingularDomSpecValue, SingularDomSpecValue[]>(domSpecValue) ?
+            indexOfFinalElement<SingularDomSpecValue[]>(domSpecValue) ?
                 undefined :
                 use.Ordinal(domSpecValue, insteadOf<Ordinal, ArrayedDomSpecValue>(fieldIndex)) :
             isSingularDomSpecValue(domSpecValue) ?
@@ -55,7 +55,7 @@ const computeSingularValidation: (computeSingularValidationParameters: {
         !isUndefined(fieldIndex) && isArrayedValidation(validation) ?
             isUndefined(validation) ||
             insteadOf<Ordinal, ArrayedValidation>(fieldIndex) >
-            indexOfFinalElement<SingularValidation, SingularValidation[]>(validation) ?
+            indexOfFinalElement<SingularValidation[]>(validation) ?
                 undefined :
                 use.Ordinal(validation, insteadOf<Ordinal, SingularValidation[]>(fieldIndex)) :
             isSingularValidation(validation) ?

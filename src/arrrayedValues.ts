@@ -25,7 +25,7 @@ const computeArrayedSpecValue: (submittedSpecs: Specs, specKey: string) => Array
         }
 
         if (!isArrayedSpecValue(maybeSubmittedValue)) {
-            throw new Error(`submitted value was not arrayed: ${maybeSubmittedValue}`)
+            throw new Error(`submitted value was not arrayed: ${String(maybeSubmittedValue)}`)
         }
 
         return maybeSubmittedValue

@@ -3,7 +3,7 @@
 # Musical Patterns - Spec
 
 ```
-interface Spec<SpecsType = Specs> {
+interface Spec<SpecsType extends Specs = Specs> {
     computeValidations?: ComputeValidations<SpecsType>,
     configurations: Configurations<SpecsType>,
     initialSpecs: SpecsType,

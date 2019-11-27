@@ -1,7 +1,7 @@
 import { entries, Maybe, reduce } from '@musical-patterns/utilities'
 import { Configuration, Configurations, InputType, RangedConstraint, StringedConstraint } from '../configuration'
 import { isArrayedDomSpecValue } from '../typeGuards'
-import { DomSpecValue, Specs } from '../types'
+import { DomSpecValue, Specs, SpecValue } from '../types'
 import { validateArrayedSpec } from './arrayedSpecs'
 import {
     mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpecBasedSolelyOnItsOwnConstraint,
@@ -34,12 +34,12 @@ const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Conf
         return validByRangedConstraint(numericValue, constraint as Maybe<RangedConstraint>)
     }
 
-const validateSpecs: <SpecsType = Specs>(parameters: {
+const validateSpecs: <SpecsType extends Specs = Specs>(parameters: {
     computeValidations: Maybe<ComputeValidations<SpecsType>>,
     configurations: Configurations<SpecsType>,
     displayedSpecs: SpecsType,
 }) => Validations<SpecsType> =
-    <SpecsType = Specs>(
+    <SpecsType extends Specs = Specs>(
         {
             displayedSpecs,
             configurations,
@@ -48,8 +48,8 @@ const validateSpecs: <SpecsType = Specs>(parameters: {
     ): Validations<SpecsType> => {
         const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =
             reduce(
-                entries(displayedSpecs),
-                (accumulator: Validations<SpecsType>, [ key, val ]: [ string, DomSpecValue ]) => ({
+                entries<string, SpecValue>(displayedSpecs),
+                (accumulator: Validations<SpecsType>, [ key, val ]: [ string, SpecValue ]) => ({
                     ...accumulator,
                     // @ts-ignore
                     [ key ]: validateSpec(val, configurations[ key ]),

@@ -8,11 +8,11 @@ type ArrayedValidation = Maybe<SingularValidation[]>
 
 type Validation = SingularValidation | ArrayedValidation
 
-type Validations<SpecsType = Specs> = Maybe<Partial<KeyMap<SpecsType, Validation>>>
+type Validations<SpecsType extends Specs = Specs> = Maybe<Partial<KeyMap<SpecsType, Validation>>>
 
-type ComputeValidations<SpecsType = Specs> = (specs: SpecsType) => Validations<SpecsType>
+type ComputeValidations<SpecsType extends Specs = Specs> = (specs: SpecsType) => Validations<SpecsType>
 
-interface ValidateSpecsParameters<SpecsType = Specs> {
+interface ValidateSpecsParameters<SpecsType extends Specs = Specs> {
     computeValidations: Maybe<ComputeValidations<SpecsType>>,
     configurations: Configurations<SpecsType>,
     displayedSpecs: SpecsType,

@@ -62,7 +62,6 @@ export {
     STANDARD_METERS_PHYSICALIZATION_TRANSLATION,
 } from './constants'
 export {
-    StandardSpecs,
     StandardSpec,
     Specs,
     Spec,

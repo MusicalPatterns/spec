@@ -10,3 +10,7 @@ export {
     Validations,
     ComputeValidations,
 } from './validation/indexForTest'
+
+export {
+    Specs,
+} from './types'

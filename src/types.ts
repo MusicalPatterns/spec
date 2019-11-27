@@ -30,20 +30,18 @@ enum StandardSpec {
     METERS_PHYSICALIZATION_TRANSLATION = 'metersPhysicalizationTranslation',
 }
 
-type StandardSpecs = Partial<{
+type Specs = Partial<{
     [ StandardSpec.MS_PHYSICALIZATION ]: Duration,
     [ StandardSpec.MS_PHYSICALIZATION_TRANSLATION ]: Translation<Duration>,
     [ StandardSpec.HZ_PHYSICALIZATION ]: Tone,
     [ StandardSpec.HZ_PHYSICALIZATION_TRANSLATION ]: Translation<Tone>,
     [ StandardSpec.METERS_PHYSICALIZATION ]: Location,
     [ StandardSpec.METERS_PHYSICALIZATION_TRANSLATION ]: Array<Translation<Location>>,
-}>
+}> & ObjectOf<Maybe<SpecValue>>
 
-interface Specs extends StandardSpecs, ObjectOf<Maybe<SpecValue>> {}
+interface DomSpecs extends KeyMap<Specs, DomSpecValue>, ObjectOf<Maybe<DomSpecValue>> {}
 
-interface DomSpecs extends KeyMap<StandardSpecs, DomSpecValue>, ObjectOf<Maybe<DomSpecValue>> {}
-
-interface Spec<SpecsType = Specs> {
+interface Spec<SpecsType extends Specs = Specs> {
     computeValidations?: ComputeValidations<SpecsType>,
     configurations: Configurations<SpecsType>,
     initialSpecs: SpecsType,
@@ -52,7 +50,6 @@ interface Spec<SpecsType = Specs> {
 }
 
 export {
-    StandardSpecs,
     StandardSpec,
     Specs,
     Spec,

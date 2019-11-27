@@ -7,9 +7,9 @@ import {
     STANDARD_MS_PHYSICALIZATION,
     STANDARD_MS_PHYSICALIZATION_TRANSLATION,
 } from './constants'
-import { Spec, StandardSpec, StandardSpecs } from './types'
+import { Spec, Specs, StandardSpec } from './types'
 
-const standardInitialSpecs: StandardSpecs = {
+const standardInitialSpecs: Specs = {
     [ StandardSpec.MS_PHYSICALIZATION ]: STANDARD_MS_PHYSICALIZATION,
     [ StandardSpec.MS_PHYSICALIZATION_TRANSLATION ]: STANDARD_MS_PHYSICALIZATION_TRANSLATION,
     [ StandardSpec.HZ_PHYSICALIZATION ]: STANDARD_HZ_PHYSICALIZATION,
@@ -18,7 +18,7 @@ const standardInitialSpecs: StandardSpecs = {
     [ StandardSpec.METERS_PHYSICALIZATION_TRANSLATION ]: STANDARD_METERS_PHYSICALIZATION_TRANSLATION,
 }
 
-const standardSpec: Spec<StandardSpecs> = {
+const standardSpec: Spec = {
     configurations: standardConfigurations,
     initialSpecs: standardInitialSpecs,
 }
