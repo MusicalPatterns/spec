@@ -18,13 +18,13 @@ import { validByRangedConstraint } from './rangedConstraints'
 import { validByStringedConstraint } from './stringedConstraints'
 import { ComputeValidations, ValidateSpecsParameters, Validation, Validations } from './types'
 
-const isOptional: (constraint: Maybe<Constraint>) => boolean =
+const isRequired: (constraint: Maybe<Constraint>) => boolean =
     (constraint: Maybe<Constraint>): boolean =>
-        !!constraint && !!constraint.optional
+        !!constraint && !!constraint.required
 
 const validateUndefinedSpec: (constraint: Maybe<Constraint>) => Validation =
     (constraint: Maybe<Constraint>): Validation =>
-        isOptional(constraint) ? undefined : 'this spec is required'
+        isRequired(constraint) ? 'this spec is required' : undefined
 
 const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>) => Validation =
     (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>): Validation => {

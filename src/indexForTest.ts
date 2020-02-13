@@ -3,6 +3,7 @@
 export {
     InputType,
     Configurations,
+    OptionedConstraint,
     computeBasicOptionedConstraintFromEnum,
 } from './configuration/indexForTest'
 export {

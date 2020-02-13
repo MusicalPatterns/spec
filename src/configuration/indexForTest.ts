@@ -5,4 +5,5 @@ export { computeBasicOptionedConstraintFromEnum } from './constraint/indexForTes
 export {
     InputType,
     Configurations,
+    OptionedConstraint,
 } from './types'

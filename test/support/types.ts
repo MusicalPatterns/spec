@@ -13,7 +13,7 @@ interface MinimumTestableSpec extends Specs {
 }
 
 interface OptionalTestingSpec extends Specs {
-    optionalSpec: Maybe<number>,
+    notRequiredSpec: Maybe<number>,
     requiredSpec: Maybe<number>,
 }
 

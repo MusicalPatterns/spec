@@ -141,15 +141,15 @@ describe('validation of specs', () => {
             })
     })
 
-    it('works for optional specs', () => {
+    it('works for not required specs', () => {
         const configurations: Configurations<OptionalTestingSpec> = {
-            optionalSpec: {
-                constraint: {
-                    optional: true,
-                },
+            notRequiredSpec: {
                 inputType: InputType.RANGED,
             },
             requiredSpec: {
+                constraint: {
+                    required: true,
+                },
                 inputType: InputType.RANGED,
             },
         }
@@ -158,14 +158,14 @@ describe('validation of specs', () => {
                 computeValidations: undefined,
                 configurations,
                 displayedSpecs: {
-                    optionalSpec: undefined,
+                    notRequiredSpec: undefined,
                     requiredSpec: undefined,
                 },
             })
 
         expect(validations)
             .toEqual({
-                optionalSpec: undefined,
+                notRequiredSpec: undefined,
                 requiredSpec: 'this spec is required',
             })
     })
