@@ -1,5 +1,6 @@
 import { isUndefined, Maybe } from '@musical-patterns/utilities'
 import { RangedConstraint } from '../configuration'
+import { DomSpecValue } from '../types'
 import { SingularValidation } from './types'
 
 const validByMin: (numericValue: number, min: Maybe<number>, excludeMin: boolean) => SingularValidation =
@@ -55,8 +56,17 @@ const validByStep: (numericValue: number, integer: Maybe<boolean>) => SingularVa
         return undefined
     }
 
-const validByRangedConstraint: (numericValue: number, constraint: Maybe<RangedConstraint>) => SingularValidation =
-    (numericValue: number, constraint: Maybe<RangedConstraint>): SingularValidation => {
+const validByRangedConstraint:
+    (displayedSpecValue: DomSpecValue, constraint: Maybe<RangedConstraint>) => SingularValidation =
+    (displayedSpecValue: DomSpecValue, constraint: Maybe<RangedConstraint>): SingularValidation => {
+        let numericValue: number
+        try {
+            numericValue = JSON.parse(displayedSpecValue as string)
+        }
+        catch (e) {
+            return 'this input is formatted in a way which cannot be parsed'
+        }
+
         if (isUndefined(constraint)) {
             return undefined
         }

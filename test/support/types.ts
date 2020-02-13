@@ -1,3 +1,4 @@
+import { Maybe } from '@musical-patterns/utilities'
 import { Specs } from '../../src/indexForTest'
 
 enum ExampleEnum {
@@ -11,7 +12,13 @@ interface MinimumTestableSpec extends Specs {
     otherSpec: number,
 }
 
+interface OptionalTestingSpec extends Specs {
+    optionalSpec: Maybe<number>,
+    requiredSpec: Maybe<number>,
+}
+
 export {
     MinimumTestableSpec,
+    OptionalTestingSpec,
     ExampleEnum,
 }

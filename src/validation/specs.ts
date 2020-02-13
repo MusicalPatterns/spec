@@ -1,5 +1,12 @@
-import { entries, Maybe, reduce } from '@musical-patterns/utilities'
-import { Configuration, Configurations, InputType, RangedConstraint, StringedConstraint } from '../configuration'
+import { entries, isUndefined, Maybe, reduce } from '@musical-patterns/utilities'
+import {
+    Configuration,
+    Configurations,
+    Constraint,
+    InputType,
+    RangedConstraint,
+    StringedConstraint,
+} from '../configuration'
 import { isArrayedDomSpecValue } from '../typeGuards'
 import { DomSpecValue, Specs, SpecValue } from '../types'
 import { validateArrayedSpec } from './arrayedSpecs'
@@ -11,27 +18,34 @@ import { validByRangedConstraint } from './rangedConstraints'
 import { validByStringedConstraint } from './stringedConstraints'
 import { ComputeValidations, ValidateSpecsParameters, Validation, Validations } from './types'
 
+const isOptional: (constraint: Maybe<Constraint>) => boolean =
+    (constraint: Maybe<Constraint>): boolean =>
+        !!constraint && !!constraint.optional
+
+const validateUndefinedSpec: (constraint: Maybe<Constraint>) => Validation =
+    (constraint: Maybe<Constraint>): Validation =>
+        isOptional(constraint) ? undefined : 'this spec is required'
+
 const validateSpec: (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>) => Validation =
     (displayedSpecValue: DomSpecValue, configuration: Maybe<Configuration>): Validation => {
         if (!validationRequired(configuration)) {
             return undefined
         }
+
         const { constraint, inputType } = configuration
+
+        if (isUndefined(displayedSpecValue)) {
+            return validateUndefinedSpec(constraint)
+        }
+
         if (isArrayedDomSpecValue(displayedSpecValue)) {
             return validateArrayedSpec(displayedSpecValue, configuration)
         }
         if (inputType === InputType.STRINGED) {
             return validByStringedConstraint(displayedSpecValue as string, constraint as Maybe<StringedConstraint>)
         }
-        let numericValue: number
-        try {
-            numericValue = JSON.parse(displayedSpecValue as string)
-        }
-        catch (e) {
-            return 'this input is formatted in a way which cannot be parsed'
-        }
 
-        return validByRangedConstraint(numericValue, constraint as Maybe<RangedConstraint>)
+        return validByRangedConstraint(displayedSpecValue, constraint as Maybe<RangedConstraint>)
     }
 
 const validateSpecs: <SpecsType extends Specs = Specs>(parameters: {

@@ -22,24 +22,27 @@ interface RangedConstraint {
     integer?: boolean,
     max?: number,
     min?: number,
+    optional?: boolean,
 }
 
 interface StringedConstraint {
     maxLength?: number,
     minLength?: number,
+    optional?: boolean,
 }
 
 interface OptionedConstraintOption extends Presentable {
     value: string,
 }
 
-type OptionedConstraint = OptionedConstraintOption[]
+type OptionedConstraint = { optional?: boolean } & OptionedConstraintOption[]
 
 type Constraint = RangedConstraint | OptionedConstraint | StringedConstraint
 
 interface ArrayedConstraint {
     maxLength?: number,
     minLength?: number,
+    optional?: boolean,
 }
 
 interface SharedConfiguration extends Presentable {

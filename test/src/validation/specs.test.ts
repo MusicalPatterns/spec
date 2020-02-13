@@ -1,5 +1,6 @@
 import { ComputeValidations, Configurations, InputType, validateSpecs, Validations } from '../../../src/indexForTest'
 import { MinimumTestableSpec } from '../../support'
+import { OptionalTestingSpec } from '../../support/types'
 
 const EXPECTED_CUSTOM_VALIDATION_MESSAGE: string = 'cannot be six'
 
@@ -137,6 +138,35 @@ describe('validation of specs', () => {
             .toEqual({
                 justChangedSpec: 'must be less than or equal to 5',
                 otherSpec: 'must be greater than or equal to 5',
+            })
+    })
+
+    it('works for optional specs', () => {
+        const configurations: Configurations<OptionalTestingSpec> = {
+            optionalSpec: {
+                constraint: {
+                    optional: true,
+                },
+                inputType: InputType.RANGED,
+            },
+            requiredSpec: {
+                inputType: InputType.RANGED,
+            },
+        }
+        const validations: Validations<OptionalTestingSpec> =
+            validateSpecs({
+                computeValidations: undefined,
+                configurations,
+                displayedSpecs: {
+                    optionalSpec: undefined,
+                    requiredSpec: undefined,
+                },
+            })
+
+        expect(validations)
+            .toEqual({
+                optionalSpec: undefined,
+                requiredSpec: 'this spec is required',
             })
     })
 })

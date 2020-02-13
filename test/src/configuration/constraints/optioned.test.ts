@@ -1,7 +1,7 @@
-import { computeBasicOptionedConstraintFromEnum } from '../../../src/indexForTest'
-import { ExampleEnum } from '../../support'
+import { computeBasicOptionedConstraintFromEnum } from '../../../../src/indexForTest'
+import { ExampleEnum } from '../../../support'
 
-describe('constraints', () => {
+describe('optioned constraints', () => {
     it('compute basic optioned constraint from enum', () => {
         expect(computeBasicOptionedConstraintFromEnum(ExampleEnum))
             .toEqual([
