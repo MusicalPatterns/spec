@@ -4,7 +4,7 @@ import { ExampleEnum } from '../../../support'
 describe('optioned constraints', () => {
     describe('compute basic optioned constraint from enum', () => {
         it('works', () => {
-            const optionedContraint: OptionedConstraint = computeBasicOptionedConstraintFromEnum(ExampleEnum)
+            const optionedContraint: OptionedConstraint = computeBasicOptionedConstraintFromEnum(ExampleEnum, { required: true })
 
             expect(optionedContraint.required)
                 .toBe(true)
@@ -17,7 +17,7 @@ describe('optioned constraints', () => {
         })
 
         it('works when not required', () => {
-            const optionedContraint: OptionedConstraint = computeBasicOptionedConstraintFromEnum(ExampleEnum, { required: false })
+            const optionedContraint: OptionedConstraint = computeBasicOptionedConstraintFromEnum(ExampleEnum)
 
             expect(optionedContraint[0])
                 .toEqual({ value: undefined })

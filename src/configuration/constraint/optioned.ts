@@ -3,7 +3,7 @@ import { OptionedConstraint, OptionedConstraintOption } from '../types'
 
 const computeBasicOptionedConstraintFromEnum:
     (enumerator: unknown, options?: { required?: boolean }) => OptionedConstraint =
-    (enumerator: unknown, { required }: { required?: boolean } = { required: true }): OptionedConstraint => {
+    (enumerator: unknown, { required }: { required?: boolean } = {}): OptionedConstraint => {
         const optionedConstraint: OptionedConstraint = map(
             keys(enumerator as ObjectOf<string>),
             (key: string): OptionedConstraintOption => ({
