@@ -20,7 +20,7 @@ describe('optioned constraints', () => {
             const optionedContraint: OptionedConstraint = computeBasicOptionedConstraintFromEnum(ExampleEnum)
 
             expect(optionedContraint[0])
-                .toEqual({ value: undefined })
+                .toEqual({ formattedName: '', value: undefined })
             expect(optionedContraint[1])
                 .toEqual({ value: ExampleEnum.OPTION_ONE })
             expect(optionedContraint[2])

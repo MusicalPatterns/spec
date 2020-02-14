@@ -12,7 +12,7 @@ const computeBasicOptionedConstraintFromEnum:
         )
 
         if (!required) {
-            optionedConstraint.unshift({ value: undefined })
+            optionedConstraint.unshift({ formattedName: '', value: undefined })
         }
         else {
             optionedConstraint.required = true
