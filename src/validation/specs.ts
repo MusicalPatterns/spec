@@ -63,7 +63,10 @@ const validateSpecs: <SpecsType extends Specs = Specs>(parameters: {
         const reevaluatedValidationsOfEachSpecAsItIsDisplayedAndBasedSolelyOnItsOwnConstraint: Validations<SpecsType> =
             reduce(
                 entries<string, SpecValue>(displayedSpecs),
-                (accumulator: Validations<SpecsType>, [ key, val ]: [ string, SpecValue ]) => ({
+                (
+                    accumulator: Validations<SpecsType>,
+                    [ key, val ]: [ string, SpecValue ],
+                ): Validations<SpecsType> => ({
                     ...accumulator,
                     // @ts-ignore
                     [ key ]: validateSpec(val, configurations[ key ]),

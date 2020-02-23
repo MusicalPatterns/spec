@@ -10,7 +10,7 @@ const STANDARD_HZ_PHYSICALIZATION_TRANSLATION: Maybe<Translation<Tone>> = undefi
 
 const STANDARD_METERS_PHYSICALIZATION: Maybe<Location> = undefined
 const STANDARD_METERS_PHYSICALIZATION_TRANSLATION: Array<Translation<Location>> =
-    [ 0, 0, 0 ].map((dimension: number) => as.Translation<Location>(dimension))
+    [ 0, 0, 0 ].map((dimension: number): Translation<Location> => as.Translation<Location>(dimension))
 
 export {
     STANDARD_MS_PHYSICALIZATION,

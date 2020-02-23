@@ -4,8 +4,8 @@ import { OptionalTestingSpec } from '../../support/types'
 
 const EXPECTED_CUSTOM_VALIDATION_MESSAGE: string = 'cannot be six'
 
-describe('validation of specs', () => {
-    it('works when one spec is invalid due to a basic constraint', () => {
+describe('validation of specs', (): void => {
+    it('works when one spec is invalid due to a basic constraint', (): void => {
         const configurations: Configurations<MinimumTestableSpec> = {
             justChangedSpec: {
                 constraint: {
@@ -34,7 +34,7 @@ describe('validation of specs', () => {
             })
     })
 
-    it('works when one spec is invalid due to a custom validation', () => {
+    it('works when one spec is invalid due to a custom validation', (): void => {
         const configurations: Configurations<MinimumTestableSpec> = {
             justChangedSpec: {
                 inputType: InputType.RANGED,
@@ -70,7 +70,7 @@ describe('validation of specs', () => {
             })
     })
 
-    it('works when one spec is invalid due to a basic constraint and another is invalid due to a custom validation', () => {
+    it('works when one spec is invalid due to a basic constraint and another is invalid due to a custom validation', (): void => {
         const configurations: Configurations<MinimumTestableSpec> = {
             justChangedSpec: {
                 inputType: InputType.RANGED,
@@ -109,7 +109,7 @@ describe('validation of specs', () => {
             })
     })
 
-    it('works when two specs are invalid due to basic constraints', () => {
+    it('works when two specs are invalid due to basic constraints', (): void => {
         const configurations: Configurations<MinimumTestableSpec> = {
             justChangedSpec: {
                 constraint: {
@@ -141,7 +141,7 @@ describe('validation of specs', () => {
             })
     })
 
-    it('works for not required specs', () => {
+    it('works for not required specs', (): void => {
         const configurations: Configurations<OptionalTestingSpec> = {
             notRequiredSpec: {
                 inputType: InputType.RANGED,

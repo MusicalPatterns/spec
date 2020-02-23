@@ -14,7 +14,7 @@ const mergeValidations: (parameters: {
     }): Specs => {
         if (!isUndefined(validations)) {
             Object.entries(validations)
-                .forEach(([ validationSpecKey, validation ]: [ string, Validation ]) => {
+                .forEach(([ validationSpecKey, validation ]: [ string, Validation ]): void => {
                     if (isUndefined(validation)) {
                         objectSet(
                             updatedSubmittedSpecs,
