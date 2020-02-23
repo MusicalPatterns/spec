@@ -7,6 +7,7 @@ const standardConfigurations: StandardConfigurations = {
         constraint: {
             excludeMin: true,
             min: 0,
+            required: true,
         },
         formattedName: 'basis duration',
         inputType: InputType.RANGED,
@@ -22,6 +23,7 @@ const standardConfigurations: StandardConfigurations = {
         constraint: {
             excludeMin: true,
             min: 0,
+            required: true,
         },
         formattedName: 'basis frequency',
         inputType: InputType.RANGED,
@@ -42,6 +44,9 @@ const standardConfigurations: StandardConfigurations = {
         units: Units.METERS,
     },
     [ StandardSpec.METERS_PHYSICALIZATION_TRANSLATION]: {
+        constraint: {
+            required: true,
+        },
         description: 'where the pattern will be spatially centered',
         formattedName: 'basis position',
         inputType: InputType.RANGED,

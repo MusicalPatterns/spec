@@ -32,10 +32,10 @@ enum StandardSpec {
 
 type Specs = Partial<{
     [ StandardSpec.MS_PHYSICALIZATION ]: Duration,
-    [ StandardSpec.MS_PHYSICALIZATION_TRANSLATION ]: Translation<Duration>,
+    [ StandardSpec.MS_PHYSICALIZATION_TRANSLATION ]: Maybe<Translation<Duration>>,
     [ StandardSpec.HZ_PHYSICALIZATION ]: Tone,
-    [ StandardSpec.HZ_PHYSICALIZATION_TRANSLATION ]: Translation<Tone>,
-    [ StandardSpec.METERS_PHYSICALIZATION ]: Location,
+    [ StandardSpec.HZ_PHYSICALIZATION_TRANSLATION ]: Maybe<Translation<Tone>>,
+    [ StandardSpec.METERS_PHYSICALIZATION ]: Maybe<Location>,
     [ StandardSpec.METERS_PHYSICALIZATION_TRANSLATION ]: Array<Translation<Location>>,
 }> & ObjectOf<Maybe<SpecValue>>
 
