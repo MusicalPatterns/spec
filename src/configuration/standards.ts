@@ -43,7 +43,7 @@ const standardConfigurations: StandardConfigurations = {
         order: 1,
         units: Units.METERS,
     },
-    [ StandardSpec.METERS_PHYSICALIZATION_TRANSLATION]: {
+    [ StandardSpec.METERS_PHYSICALIZATION_TRANSLATION ]: {
         constraint: {
             required: true,
         },
