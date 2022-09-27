@@ -66,6 +66,7 @@ const validateSpecs: <SpecsType extends Specs = Specs>(parameters: {
                 (
                     accumulator: Validations<SpecsType>,
                     [ key, val ]: [ string, SpecValue ],
+                    // @ts-ignore
                 ): Validations<SpecsType> => ({
                     ...accumulator,
                     // @ts-ignore

@@ -22,7 +22,7 @@ const mergeAnyValidationResultsFromFunctionOverAllSpecsOntoValidationsOfEachSpec
         reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint: Validations<SpecsType>,
         reevaluatedValidationsFromFunctionOverAllSpecs: Validations<SpecsType>,
     ): Validations<SpecsType> => {
-        const validations: Validations<SpecsType> = { ...reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint }
+        const validations: Validations<SpecsType> = { ...reevaluatedValidationsOfEachSpecInAndOfItsOwnConstraint } as Validations<SpecsType>
         if (!isUndefined(reevaluatedValidationsFromFunctionOverAllSpecs)) {
             entries(reevaluatedValidationsFromFunctionOverAllSpecs)
                 .forEach(([ specKey, validation ]: [ string, Validation ]): void => {
