@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/MusicalPatterns/spec.svg?branch=master)](https://travis-ci.com/MusicalPatterns/spec)
-
 # Musical Patterns - Spec
 
 ```
